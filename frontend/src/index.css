@@ -1,76 +1,89 @@
-@import "tailwindcss";
-
-@theme {
-  --color-primary-color: #fce4ec;
-  --color-primary-dark: #f8bbd0;
-  --color-accent-color: #d81b60;
-  --color-text-color: #3e2723;
-  --color-bg-color: #fffafb;
-  --font-serif: "Libre Baskerville", serif;
-  --font-sans: "Montserrat", sans-serif;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Base Styles */
-@layer base {
-  :root {
-    --primary-color: #fce4ec;
-    --primary-dark: #f8bbd0;
-    --accent-color: #d81b60;
-    --text-color: #3e2723;
-    --bg-color: #fffafb;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-    --transition: all 0.3s ease;
-  }
-
-  body {
-    @apply bg-bg-color text-text-color font-sans leading-relaxed;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold;
-  }
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #fff5f7; /* light bakery pink */
+  color: #333;
 }
 
-/* Component Styles */
-@layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow);
-  }
-
-  .btn {
-    @apply inline-flex items-center justify-center px-8 py-3 rounded-full font-bold transition-all duration-300;
-  }
-
-  .btn-primary {
-    @apply bg-accent-color text-white hover:bg-pink-800 hover:-translate-y-0.5 hover:shadow-lg active:scale-95;
-  }
-
-  .btn-outline {
-    @apply border-2 border-accent-color text-accent-color hover:bg-accent-color hover:text-white hover:-translate-y-0.5 active:scale-95;
-  }
-
-  .section-padding {
-    @apply py-16 md:py-24;
-  }
+/* Container */
+.container {
+  padding: 20px;
+  text-align: center;
 }
 
-/* Utilities */
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+/* Title */
+.title {
+  font-size: 2.5rem;
+  color: #e91e63;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image */
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Text */
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  color: #e91e63;
+  font-weight: bold;
+}
+
+/* Button */
+button {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background: #c2185b;
+}
+
+/* Cart Page */
+h2 {
+  margin: 20px 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
 }
