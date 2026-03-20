@@ -25,7 +25,7 @@ mongoose.connect(db_uri)
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
+app.use("/api/products", productRoutes);
 app.use('/api/orders', orderRoutes);
 
 // Simple root route
