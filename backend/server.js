@@ -1,37 +1,30 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const morgan = require('morgan');
-
-const authRoutes = require('./routes/authRoutes');
-const productRoutes = require('./routes/productRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-
-dotenv.config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
-app.use(express.json());
+// Middleware
 app.use(cors());
-app.use(morgan('dev'));
+app.use(express.json());
 
-// Connect to MongoDB
-const db_uri = 'mongodb://localhost:27017/rosywood_bakery';
-console.log('Connecting to MongoDB at:', db_uri);
-mongoose.connect(db_uri)
-  .then(() => console.log('MongoDB Connected'))
-  .catch((err) => console.log('MongoDB connection error: ', err));
+// ✅ IMPORT ROUTES
+const productRoutes = require("./routes/productRoutes");
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use("/api/products", require("./routes/productRoutes"));
-app.use('/api/orders', orderRoutes);
+// ✅ CONNECT ROUTES (VERY IMPORTANT)
+app.use("/api/products", productRoutes);
 
-// Simple root route
-app.get('/', (req, res) => {
-  res.send('Rosywood Bakery API is running...');
+// Test route
+app.get("/", (req, res) => {
+  res.send("API is running...");
 });
 
+// DB connect
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
+
+// Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
