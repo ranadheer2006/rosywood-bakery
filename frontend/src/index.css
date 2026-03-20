@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-color: #fce4ec;
+  --color-primary-dark: #f8bbd0;
+  --color-accent-color: #d81b60;
+  --color-text-color: #3e2723;
+  --color-bg-color: #fffafb;
+  --font-serif: "Libre Baskerville", serif;
+  --font-sans: "Montserrat", sans-serif;
+}
+
+/* Base Styles */
+@layer base {
+  :root {
+    --primary-color: #fce4ec;
+    --primary-dark: #f8bbd0;
+    --accent-color: #d81b60;
+    --text-color: #3e2723;
+    --bg-color: #fffafb;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --transition: all 0.3s ease;
+  }
+
+  body {
+    @apply bg-bg-color text-text-color font-sans leading-relaxed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full font-bold transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-accent-color text-white hover:bg-pink-800 hover:-translate-y-0.5 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-accent-color text-accent-color hover:bg-accent-color hover:text-white hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
